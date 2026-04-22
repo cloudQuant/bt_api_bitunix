@@ -5,10 +5,11 @@ import time
 import uuid
 from typing import Any, Optional
 
+from bt_api_base.containers.requestdatas.request_data import RequestData
 from bt_api_base.feeds.capability import Capability
 from bt_api_base.feeds.feed import Feed
 from bt_api_base.feeds.http_client import HttpClient
-from bt_api_base.containers.requestdatas.request_data import RequestData
+
 from bt_api_bitunix.exchange_data import BitunixExchangeDataSpot
 
 RequestParams = dict[str, Any]
@@ -43,7 +44,7 @@ class BitunixRequestData(Feed):
         self._http_client = HttpClient(venue=self.exchange_name, timeout=10)
 
     def _generate_signature(
-        self, nonce: str, timestamp: str, query_params: str = "", body: str = ""
+        self, nonce: str, timestamp: str, query_params: str = "", body: str = "",
     ) -> str:
         api_key = self._params.api_key
         secret = self._params.api_secret
@@ -55,7 +56,7 @@ class BitunixRequestData(Feed):
         return hashlib.sha256(second_input.encode("utf-8")).hexdigest()
 
     def _get_headers(
-        self, method: str, request_path: str, params: RequestParams | None = None, body: Any = ""
+        self, method: str, request_path: str, params: RequestParams | None = None, body: Any = "",
     ) -> dict[str, str]:
         nonce = str(uuid.uuid4()).replace("-", "")[:32]
         timestamp = str(int(time.time() * 1000))

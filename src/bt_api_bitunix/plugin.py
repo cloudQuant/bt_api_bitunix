@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from bt_api_base.plugins.protocol import PluginInfo
+
 from bt_api_bitunix.exchange_data import BitunixExchangeDataSpot
 
 

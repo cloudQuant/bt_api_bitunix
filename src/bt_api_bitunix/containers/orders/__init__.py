@@ -42,11 +42,15 @@ class BitunixOrderData(OrderData):
 
         if isinstance(self.order_data, dict):
             data = self.order_data
-            self.order_id = from_dict_get_string(data, "orderId") or from_dict_get_string(data, "id")
+            self.order_id = from_dict_get_string(data, "orderId") or from_dict_get_string(
+                data, "id",
+            )
             self.side = from_dict_get_string(data, "side")
             self.order_type = from_dict_get_string(data, "type")
             self.price = from_dict_get_float(data, "price")
-            self.quantity = from_dict_get_float(data, "qty") or from_dict_get_float(data, "quantity")
+            self.quantity = from_dict_get_float(data, "qty") or from_dict_get_float(
+                data, "quantity",
+            )
             self.status = from_dict_get_string(data, "status")
 
         self.has_been_init_data = True

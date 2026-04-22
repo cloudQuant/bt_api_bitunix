@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "bt_api_bitunix"
-version = "0.1.0"
+version = "0.1.1"
 description = "Bitunix exchange plugin for bt_api"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -15,3 +15,18 @@ dev = ["pytest"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/bt_api_bitunix"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W", "I", "UP", "B", "C4", "T20", "YTT",
+    "ASYNC", "BLE", "COM", "DTZ", "EM", "ISC", "ICN", "G",
+    "PIE", "T10", "DJ", "S", "N", "RUF100", "PERF", "PIE790",
+]
+ignore = [
+    "E501", "B008", "N802", "N803", "S101",
+    "G004", "BLE001", "EM102",
+]

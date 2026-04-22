@@ -51,7 +51,9 @@ class BitunixBarData(BarData):
         if isinstance(klines, list) and len(klines) > 0:
             first = klines[0]
             if isinstance(first, dict):
-                self.open_time = from_dict_get_float(first, "time") or from_dict_get_float(first, "timestamp")
+                self.open_time = from_dict_get_float(first, "time") or from_dict_get_float(
+                    first, "timestamp",
+                )
                 self.open = from_dict_get_float(first, "open")
                 self.high = from_dict_get_float(first, "high")
                 self.low = from_dict_get_float(first, "low")

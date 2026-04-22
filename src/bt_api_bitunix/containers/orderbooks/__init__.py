@@ -37,7 +37,9 @@ class BitunixOrderBookData(OrderBookData):
             return self
 
         if isinstance(self.orderbook_data, dict):
-            data = self.orderbook_data.get("data", {}) if isinstance(self.orderbook_data, dict) else {}
+            data = (
+                self.orderbook_data.get("data", {}) if isinstance(self.orderbook_data, dict) else {}
+            )
             bid_list = data.get("bids", [])
             ask_list = data.get("asks", [])
             self.bids = [

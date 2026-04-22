@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 from bt_api_base.registry import ExchangeRegistry
-from bt_api_bitunix.plugin import BitunixPlugin
+
 from bt_api_bitunix.feeds.live_bitunix.spot import BitunixRequestDataSpot
+from bt_api_bitunix.plugin import BitunixPlugin
 
 
 def register_bitunix():
