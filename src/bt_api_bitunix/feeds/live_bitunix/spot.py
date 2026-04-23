@@ -31,7 +31,10 @@ class BitunixRequestDataSpot(BitunixRequestData):
         self.exchange_name = kwargs.get("exchange_name", "BITUNIX___SPOT")
 
     def _get_tick(
-        self, symbol: str, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> RequestSpec:
         path = "GET /api/v1/futures/market/tickers"
         if extra_data is None:
@@ -58,13 +61,19 @@ class BitunixRequestDataSpot(BitunixRequestData):
         return [tickers] if tickers else [], False
 
     def get_tick(
-        self, symbol: str, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> Any:
         path, params, extra_data = self._get_tick(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
     def async_get_tick(
-        self, symbol: str, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> None:
         path, params, extra_data = self._get_tick(symbol, extra_data, **kwargs)
         self.submit(
@@ -181,7 +190,9 @@ class BitunixRequestDataSpot(BitunixRequestData):
         )
 
     def _get_exchange_info(
-        self, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> RequestSpec:
         path = "GET /api/v1/futures/market/symbols"
         if extra_data is None:
@@ -209,7 +220,9 @@ class BitunixRequestDataSpot(BitunixRequestData):
         return self.request(path, params=params, extra_data=extra_data)
 
     def _get_account(
-        self, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> RequestSpec:
         path = "GET /api/v1/futures/account"
         if extra_data is None:
@@ -233,13 +246,19 @@ class BitunixRequestDataSpot(BitunixRequestData):
         return [account], account is not None
 
     def get_account(
-        self, symbol: str = "ALL", extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str = "ALL",
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> Any:
         path, params, extra_data = self._get_account(extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
 
     def async_get_account(
-        self, symbol: str = "ALL", extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str = "ALL",
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> None:
         path, params, extra_data = self._get_account(extra_data, **kwargs)
         self.submit(
@@ -248,7 +267,10 @@ class BitunixRequestDataSpot(BitunixRequestData):
         )
 
     def _get_balance(
-        self, symbol: str | None = None, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str | None = None,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> RequestSpec:
         path = "GET /api/v1/futures/account/balance"
         if extra_data is None:
@@ -275,7 +297,10 @@ class BitunixRequestDataSpot(BitunixRequestData):
         return [balance], balance is not None
 
     def get_balance(
-        self, symbol: str | None = None, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str | None = None,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> Any:
         path, params, extra_data = self._get_balance(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
@@ -404,7 +429,10 @@ class BitunixRequestDataSpot(BitunixRequestData):
         return self.request(path, params=params, extra_data=extra_data)
 
     def _get_open_orders(
-        self, symbol: str | None = None, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str | None = None,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> RequestSpec:
         path = "GET /api/v1/futures/trade/get_open_orders"
         if extra_data is None:
@@ -423,7 +451,10 @@ class BitunixRequestDataSpot(BitunixRequestData):
         return path, params, extra_data
 
     def get_open_orders(
-        self, symbol: str | None = None, extra_data: RequestExtraData | None = None, **kwargs: Any,
+        self,
+        symbol: str | None = None,
+        extra_data: RequestExtraData | None = None,
+        **kwargs: Any,
     ) -> Any:
         path, params, extra_data = self._get_open_orders(symbol, extra_data, **kwargs)
         return self.request(path, params=params, extra_data=extra_data)
