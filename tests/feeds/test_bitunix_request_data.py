@@ -11,7 +11,7 @@ from bt_api_bitunix.feeds.live_bitunix.spot import BitunixRequestDataSpot
 def test_bitunix_headers_include_generated_signature(monkeypatch: Any) -> None:
     request_data = BitunixRequestData(public_key="public-key", private_key="secret-key")
     monkeypatch.setattr(
-        "bt_api_bitunix.feeds.live_bitunix.request_base.time.time", lambda: 1700000000.0
+        "bt_api_bitunix.feeds.live_bitunix.request_base.time.time", lambda: 1700000000.0,
     )
     monkeypatch.setattr(
         "bt_api_bitunix.feeds.live_bitunix.request_base.uuid.uuid4",
@@ -78,7 +78,7 @@ def test_bitunix_falls_back_to_api_credentials_when_aliases_are_empty(
         api_secret="secret-key",
     )
     monkeypatch.setattr(
-        "bt_api_bitunix.feeds.live_bitunix.request_base.time.time", lambda: 1700000000.0
+        "bt_api_bitunix.feeds.live_bitunix.request_base.time.time", lambda: 1700000000.0,
     )
     monkeypatch.setattr(
         "bt_api_bitunix.feeds.live_bitunix.request_base.uuid.uuid4",
